@@ -1,0 +1,36 @@
+Understanding Go AST
+
+Felix Sun
+
+@sunfmin
+http://theplant.jp
+
+* What is AST
+
+http://en.wikipedia.org/wiki/Abstract_syntax_tree
+
+.image ast/astwiki.png
+
+* Little bit of what Go AST looks like
+
+* The example
+
+.play ast/source.go /type.User/,/endmain/
+
+* The Parser
+
+.play ast/print.go /func.main/,/endmain/
+
+* The AST
+
+.play ast/source.ast
+
+* So if I want to find out what interfaces it has
+
+.play ast/interfacelist.go /func.main/,/endmain/
+
+* What methods each interface has?
+
+.play ast/methods.go /func.main/,/endmain/
+
+* Do the same you will find every little detail of your source code, It's all in AST
