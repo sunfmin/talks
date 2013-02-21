@@ -9,7 +9,7 @@ import (
 
 func main() {
 	fset := token.NewFileSet()
-	astf, _ := parser.ParseFile(fset, "/Users/sunfmin/gopkg/src/github.com/sunfmin/talks/2013/ast/source.go", nil, 0)
+	astf, _ := parser.ParseFile(fset, "ast/source.go", nil, 0)
 
 	w := &walker{}
 	ast.Walk(w, astf)
