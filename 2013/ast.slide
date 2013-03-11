@@ -15,7 +15,7 @@ http://en.wikipedia.org/wiki/Abstract_syntax_tree
 
 * The example
 
-.play ast/source.go /type.User/,/endmain/
+.play ast/source.go
 
 * The Parser
 

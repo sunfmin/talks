@@ -1,0 +1,85 @@
+Things you might not know about what gofmt -r can do for you
+
+Felix Sun
+March 11, 2013
+
+* Rename a method
+
+	gofmt -r "formatToHtml->FormatToHtml" -w -l .
+
+.image gofmt/method.png
+
+* Rename a local variable
+
+	gofmt -r "serv->service" -w -l .
+
+.image gofmt/variable.png
+
+
+* Rename a global variable
+
+	gofmt -r "FuncMap->CustomTemplateFuncMap" -w -l .
+
+.image gofmt/global_variable.png
+
+* False rename
+
+You will find it also renamed `template.FuncMap` to `template.CustomTemplateFuncMap` which isn't expected.
+
+But you can rename it back
+
+	gofmt -r "template.CustomTemplateFuncMap->template.FuncMap"
+
+* Rename a struct name
+
+	gofmt -r "EntryJsonResult->JsonEntry" -w .
+
+.image gofmt/struct.png
+
+* Rename a instance method
+
+	gofmt -r "TaskIsCompleted->MyTaskIsCompleted" -w .
+
+.image gofmt/instance_method.png
+
+* Ok, Just rename any thing with it
+
+.image gofmt/laugh.jpg
+
+
+* Change a string empty condition
+
+	gofmt -r="x == \"\" -> len(x) == 0" -w .
+
+.image gofmt/string_empty.png
+
+
+* Rewrite rule
+
+The rewrite rule specified with the -r flag must be a string of the form:
+
+	pattern -> replacement
+
+Both pattern and replacement must be valid Go expressions.
+In the pattern, single-character lowercase identifiers serve as
+wildcards matching arbitrary sub-expressions; those expressions
+will be substituted for the same identifiers in the replacement.
+
+* Add additional arguments to all method calls
+
+	gofmt -r="handlers.RenderPartial(x,y)-> handlers.RenderPartial(x,y,LoggedInUser)" -w .
+
+.image gofmt/add_argument.png
+
+* Change a method invocation to another
+
+	gofmt -r="env.Request().URL.Query().Get(x)-> env.Request().FormValue(x)" -w .
+
+.image gofmt/method_invocation.png
+
+
+
+
+
+
+
